@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+
+Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@create')->name("register");
+Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name("login");
+
+Route::get('/product/create', 'App\Http\Controllers\ProductController@addProduct')->name("product.create");
+Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
+
+Route::get('/combo/create', 'App\Http\Controllers\ComboController@create')->name("combo.create");
+Route::post('/combo/save', 'App\Http\Controllers\ComboController@save')->name("combo.save");
+ 
