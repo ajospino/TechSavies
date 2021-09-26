@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 
-Route::get('/register', 'App\Http\Controllers\Auth\RegisterController@create')->name("register");
-Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name("login");
+Auth::routes();
 
-Route::get('/product/create', 'App\Http\Controllers\ProductController@addProduct')->name("product.create");
+Route::get('/product/list', 'App\Http\Controllers\ProductController@list')->name("product.list");
+Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+Route::get('/product/create', 'App\Http\Controllers\ProductController@add')->name("product.create");
 Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
 
 Route::get('/combo/create', 'App\Http\Controllers\ComboController@create')->name("combo.create");

@@ -9,6 +9,8 @@ use App\Models\Item;
 class Product extends Model
 {
     // attributes id, name, model, category, brand, stock, price, isPromoted, combos, items
+    protected $fillable = ['id', 'name', 'model', 'category', 'brand', 'stock', 'price', 'isPromoted'];
+    
     public function getId()
     {
         return $this->attributes["id"];
@@ -24,7 +26,7 @@ class Product extends Model
         return $this->attributes["name"];
     }
 
-    public function setId($name)
+    public function setName($name)
     {
         $this->attributes["name"] = $name;
     }
@@ -88,6 +90,8 @@ class Product extends Model
     {
         $this->attributes["isPromoted"] = $isPromoted;
     }
+
+    public $table = 'product';
 
     public function combo()
     {
