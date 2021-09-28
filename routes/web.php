@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+
+Auth::routes();
+
+Route::get('/product/list', 'App\Http\Controllers\ProductController@list')->name("product.list");
+Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+Route::get('/product/create', 'App\Http\Controllers\ProductController@add')->name("product.create");
+Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
+
+Route::get('/combo/list', 'App\Http\Controllers\ComboController@list')->name("combo.list");
+Route::get('/combo/show/{id}', 'App\Http\Controllers\ComboController@show')->name("combo.show");
+Route::get('/combo/edit/{id}', 'App\Http\Controllers\ComboController@edit')->name("combo.edit");
+Route::get('/combo/create', 'App\Http\Controllers\ComboController@add')->name("combo.create");
+Route::post('/combo/save', 'App\Http\Controllers\ComboController@save')->name("combo.save");
+
+Route::get('/combo/moderate', 'App\Http\Controllers\ComboController@moderate')->name("combo.moderate");
+Route::post('/combo/approve', 'App\Http\Controllers\ComboController@approve')->name("combo.approve");
+Route::post('/combo/deny', 'App\Http\Controllers\ComboController@deny')->name("combo.deny");
+
+ 
