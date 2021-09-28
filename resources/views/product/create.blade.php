@@ -4,8 +4,10 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
+<section class="page-section create-products" id="products-creation">
+<div class="container mt-5 mb-5">
+    <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Product creation</h2>
+    <div class="row justify-content-center mt-5">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Create product</div>
@@ -20,20 +22,32 @@
 
                 <form method="POST" action="{{ route('product.save') }}">
                     @csrf
-                    <input type="text" placeholder="Enter the name" name="name" value="{{ old('name') }}" />
-                    <input type="text" placeholder="Enter the model" name="model" value="{{ old('model') }}" />
-                    <!-- <input type="text" placeholder="Enter the category/type of the product" name="category" value="{{ old('category') }}" /> -->
-                    <select id="my-select" name="category" value="{{ old('category') }}">
-                            <option value="Phone"> Phone</option>
-                            <option value="Phone case"> Phone case</option>
-                            <option value="Charger"> Charger</option>
-                            <option value="USB-C cable"> USB-C cable</option>
-                            <option value="Lightning cable"> Lightning cable</option>
-                    </select>
-                    <input type="text" placeholder="Enter brand" name="brand" value="{{ old('brand') }}" />
-                    <input type="number" placeholder="Enter stock" name="stock" value="{{ old('stock') }}" />
-                    <input type="number" placeholder="Enter price" name="price" value="{{ old('price') }}" />
-
+                    <ul>
+                        <li>
+                            <input type="text" placeholder="Enter the name" name="name" value="{{ old('name') }}" />                    
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Enter the model" name="model" value="{{ old('model') }}" />
+                        </li>
+                        <li>
+                            <select id="my-select" name="category" value="{{ old('category') }}">
+                                <option value="Phone"> Phone</option>
+                                <option value="Phone case"> Phone case</option>
+                                <option value="Charger"> Charger</option>
+                                <option value="USB-C cable"> USB-C cable</option>
+                                <option value="Lightning cable"> Lightning cable</option>
+                        </select>
+                        </li>
+                        <li>
+                            <input type="text" placeholder="Enter brand" name="brand" value="{{ old('brand') }}" />
+                        </li>
+                        <li>
+                            <input type="number" placeholder="Enter stock" name="stock" value="{{ old('stock') }}" />
+                        </li>
+                        <li>
+                            <input type="number" placeholder="Enter price" name="price" value="{{ old('price') }}" />
+                        </li>      
+                    </ul>
                     <input type="submit" value="Send" />
                 </form>
 
@@ -42,4 +56,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

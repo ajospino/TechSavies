@@ -2,9 +2,8 @@
 
 @section('content')
 
-<section class="page-section portfolio" id="portfolio">
+<section class="page-section product" id="product">
     <div class="container product-description-container">
-        <!-- Portfolio Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mt-10">{{$data["product"]->name}} {{$data["product"]->model}}</h2>
         
         <p>

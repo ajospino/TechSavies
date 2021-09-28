@@ -27,18 +27,11 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
-            "name" => "required",
-            "model" => "required",
-            "category" => "required",
-            "brand" => "required",
-            "stock" => "required|gt:0",
-            "price" => "required|gt:0"
-        ]);
+        Product::validateProduct($request); 
         
         $product = Product::create($request->only('name','model','category','brand','stock','price'));
-        $product -> isPromoted = False;
-
+        
+        $product->isPromoted = Combo::findOrFail($product->comboDivider->combo->id);
 
         redirect()->route('home.index');
         //here goes the code to call the model and save it to the database     
@@ -52,13 +45,14 @@ class ProductController extends Controller
         return view('product.show')->with("data", $data);
     }
 
-    public function search($id)
-    {
-        $data = [];
-        $product = Product::findOrFail($id);
-        $data["product"] = $product;
-        return view('product.show')->with("data", $data);
-    }
+    // public function search(Request $request)
+    // {
+    //     $term = $request->input("term");
+
+    //     $results = Product::query()->when($term, fn ($query)=> $query->where('name','like',"%{term}%"))->paginate(10);
+        
+    //     return view('product.search')->with([("results",$results),("term",$term)]);
+    // }
 
 
 }

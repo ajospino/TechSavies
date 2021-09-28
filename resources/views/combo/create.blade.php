@@ -4,7 +4,9 @@
 
 @section('content')
 
-<div class="container">
+<section class="page-section create-products" id="products-creation">
+    <div class="container mt-5 mb-5">
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Combo creation</h2>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -18,9 +20,9 @@
                 </ul>
                 @endif
 
-                <form method="POST" action="{{ route('product.save') }}">
+                <form method="GET" action="{{ route('combo.moderate') }}">
                     @csrf
-                    <input type="text" placeholder="Enter the type" name="type" value="{{ old('type') }}" />
+                    <input type="text" placeholder="Enter the name" name="name" value="{{ old('name') }}" />
                     <select id="my-select" name="type" value="{{ old('type') }}">
                             <option value="1"> Phone and charger</option>
                             <option value="2"> Phone and Phone case</option>
@@ -29,13 +31,12 @@
                             <option value="5"> Phone case, charger and USB-C cable</option>
                             <option value="5"> Phone case, charger and Lightning cable</option>
                     </select>
-                    <input type="text" placeholder="Enter the model" name="model" value="{{ old('model') }}" />
-                    <!-- <input type="text" placeholder="Enter the category/type of the product" name="category" value="{{ old('category') }}" /> -->
-                    <input type="text" placeholder="Enter brand" name="brand" value="{{ old('brand') }}" />
-                    <input type="number" placeholder="Enter stock" name="stock" value="{{ old('stock') }}" />
-                    <input type="number" placeholder="Enter price" name="price" value="{{ old('price') }}" />
+                    <input type="number" placeholder="Enter the price" name="price" value="{{ old('price') }}" />
+                    <input type="text" placeholder="Enter the description" name="description" value="{{ old('description') }}" />
+                    <input type="number" placeholder="Enter validity" name="validity" value="{{ old('validity') }}" />
+                    <input type="number" placeholder="Enter the available quantity" name="quantityAvailable" value="{{ old('quantityAvailable') }}" />
 
-                    <input type="submit" value="Send" />
+                    <input type="submit" value="Send for moderation" />
                 </form>
 
                 </div>
@@ -43,4 +44,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

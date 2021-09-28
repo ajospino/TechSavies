@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Item;
 use App\Models\ComboHistory;
@@ -10,6 +11,18 @@ use App\Models\ComboHistory;
 class Combo extends Model
 {
     // attributes id, name, model, category, brand, stock, price, isPromoted, combos, items
+    protected $fillable = ['id', 'name', 'type', 'price', 'description', 'lowSale', 'validity', 'creationDate', 'quantityAvailable'];
+
+    public static function validateCombo(Request $request){
+        $request->validate([
+            "name" => "required",
+            "type" => "required",
+            "description" => "required",
+            "validity" => "required|gt:0",
+            "quantityAvailable" => "required|gt:0"
+        ]); 
+    }
+    
     public function getId()
     {
         return $this->attributes["id"];
@@ -20,14 +33,34 @@ class Combo extends Model
         $this->attributes["id"] = $id;
     }
 
-    public function getType()
+    public function getName()
     {
         return $this->attributes["name"];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes["name"] = $name;
+    }
+
+    public function getType()
+    {
+        return $this->attributes["type"];
     }
 
     public function setType($type)
     {
         $this->attributes["type"] = $type;
+    }
+
+    public function getPrice()
+    {
+        return $this->attributes["price"];
+    }
+
+    public function setPrice($price)
+    {
+        $this->attributes["price"] = $price;
     }
 
     public function getLowSale()
@@ -47,7 +80,7 @@ class Combo extends Model
 
     public function setValidity($validity)
     {
-        $this->attributes["validity"] = $validity
+        $this->attributes["validity"] = $validity;
     }
 
     public function getQuantityAvailable()
@@ -70,19 +103,21 @@ class Combo extends Model
         $this->attributes["creationDate"] = $creationDate;
     }
 
-    public function product()
+    public $table = 'combo';
+
+    public function comboDivider()
     {
-        return $this->belongsTo(Combo::class);
+        return $this->hasMany(ComboDivider::class);
     }
 
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->hasMany(Item::class);
     }
 
     public function comboHistory()
     {
-        return $this->belongsTo(ComboHistory::class);
+        return $this->hasMany(ComboHistory::class);
     }
 }
 

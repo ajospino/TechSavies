@@ -3,13 +3,25 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Combo;
+use Illuminate\Http\Request;
+use App\Models\ComboDivider;
 use App\Models\Item;
 
 class Product extends Model
 {
     // attributes id, name, model, category, brand, stock, price, isPromoted, combos, items
     protected $fillable = ['id', 'name', 'model', 'category', 'brand', 'stock', 'price', 'isPromoted'];
+    
+    public static function validateProduct(Request $request){
+        $request->validate([
+            "name" => "required",
+            "model" => "required",
+            "category" => "required",
+            "brand" => "required",
+            "stock" => "required|gt:0",
+            "price" => "required|gt:0"
+        ]);    
+    }
     
     public function getId()
     {
@@ -93,14 +105,14 @@ class Product extends Model
 
     public $table = 'product';
 
-    public function combo()
+    public function comboDivider()
     {
-        return $this->belongsTo(Combo::class);
+        return $this->hasMany(ComboDivider::class);
     }
 
     public function item()
     {
-        return $this->belongsTo(Item::class);
+        return $this->hasMany(Item::class);
     }
 }
 
