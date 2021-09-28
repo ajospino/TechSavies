@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware("guest");
     }
 
     /**
@@ -50,10 +50,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            "name" => ["required", "string", "max:255"],
+            "address" => ["required", "string", "max:255"],
+            "email" => [
+                "required",
+                "string",
+                "email",
+                "max:255",
+                "unique:users",
+            ],
+            "password" => ["required", "string", "min:8", "confirmed"],
         ]);
     }
 
@@ -66,12 +72,12 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
-            'address' => $data['address'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            "name" => $data["name"],
+            "address" => $data["address"],
+            "email" => $data["email"],
+            "password" => Hash::make($data["password"]),
         ]);
-        $user->type=0;
+        $user->type = 0;
         //redirect()->route('home.index');
         return $user;
     }
