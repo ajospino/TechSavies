@@ -14,7 +14,31 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+
+Route::get("/home", [
+    App\Http\Controllers\HomeController::class,
+    "index",
+])->name("home");
+
+Route::get("/home/user", "App\Http\Controllers\HomeController@home")->name(
+    "home.indexUser"
+);
+
+Route::get(
+    "/admin/show/{id}",
+    "App\Http\Controllers\UserController@show"
+)->name("admin.show");
+
+Route::get("/admin/list", "App\Http\Controllers\UserController@list")->name(
+    "admin.list"
+);
+
+Route::get(
+    "/admin/delete/{id}",
+    "App\Http\Controllers\UserController@delete"
+)->name("admin.delete");
 
 Auth::routes();
 
@@ -33,4 +57,3 @@ Route::get('/combo/moderate', 'App\Http\Controllers\ComboController@moderate')->
 Route::post('/combo/approve', 'App\Http\Controllers\ComboController@approve')->name("combo.approve");
 Route::post('/combo/deny', 'App\Http\Controllers\ComboController@deny')->name("combo.deny");
 
- 
