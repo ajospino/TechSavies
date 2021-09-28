@@ -13,13 +13,13 @@ class CreateComboTable extends Migration
      */
     public function up()
     {
-        Schema::create('combo', function (Blueprint $table) {
+        Schema::create("combo", function (Blueprint $table) {
             $table->id();
-            $table->integer('type');
-            $table->boolean('lowSale');
-            $table->integer('validity');
-            $table->integer('quantityAvailable');
-            $table->date('creationDate');
+            $table->integer("type");
+            $table->boolean("lowSale");
+            $table->integer("validity");
+            $table->integer("quantityAvailable");
+            $table->date("creationDate");
             //$table->foreign('product')->references('id')->on('product');
             //$table->foreign('item')->references('id')->on('item');
             //$table->foreign('comboHistory')->references('id')->on('comboHistory');
@@ -34,6 +34,6 @@ class CreateComboTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('combo');
+        Schema::dropIfExists("combo");
     }
 }

@@ -17,23 +17,14 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'address',
-        'type',
-    ];
+    protected $fillable = ["name", "email", "password", "address", "type"];
 
     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = ["password", "remember_token"];
 
     /**
      * The attributes that should be cast.
@@ -41,9 +32,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        "email_verified_at" => "datetime",
     ];
-
 
     public static function validate(Request $request)
     {
@@ -57,62 +47,61 @@ class User extends Authenticatable
 
     public function getId()
     {
-        return $this->attributes['id'];
+        return $this->attributes["id"];
     }
 
     public function setId($id)
     {
-        $this->attributes['id'] = $id;
+        $this->attributes["id"] = $id;
     }
 
     public function getName()
     {
-        return $this->attributes['name'];
+        return $this->attributes["name"];
     }
 
     public function setName($name)
     {
-        $this->attributes['name'] = $name;
+        $this->attributes["name"] = $name;
     }
 
     public function getEmail()
     {
-        return $this->attributes['email'];
+        return $this->attributes["email"];
     }
 
     public function setEmail($email)
     {
-        $this->attributes['email'] = $email;
+        $this->attributes["email"] = $email;
     }
 
     public function getAddress()
     {
-        return $this->attributes['address'];
+        return $this->attributes["address"];
     }
 
     public function setAddress($address)
     {
-        $this->attributes['address'] = $address;
+        $this->attributes["address"] = $address;
     }
 
     public function getType()
     {
-        return $this->attributes['type'];
+        return $this->attributes["type"];
     }
 
     public function setType($type)
     {
-        $this->attributes['type'] = $type;
+        $this->attributes["type"] = $type;
     }
 
     public function getPassword()
     {
-        return $this->attributes['password'];
+        return $this->attributes["password"];
     }
 
     public function setPassword($password)
     {
-        $this->attributes['password'] = $password;
+        $this->attributes["password"] = $password;
     }
-
 }

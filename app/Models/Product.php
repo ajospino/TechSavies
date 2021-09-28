@@ -10,19 +10,29 @@ use App\Models\Item;
 class Product extends Model
 {
     // attributes id, name, model, category, brand, stock, price, isPromoted, combos, items
-    protected $fillable = ['id', 'name', 'model', 'category', 'brand', 'stock', 'price', 'isPromoted'];
-    
-    public static function validateProduct(Request $request){
+    protected $fillable = [
+        "id",
+        "name",
+        "model",
+        "category",
+        "brand",
+        "stock",
+        "price",
+        "isPromoted",
+    ];
+
+    public static function validateProduct(Request $request)
+    {
         $request->validate([
             "name" => "required",
             "model" => "required",
             "category" => "required",
             "brand" => "required",
             "stock" => "required|gt:0",
-            "price" => "required|gt:0"
-        ]);    
+            "price" => "required|gt:0",
+        ]);
     }
-    
+
     public function getId()
     {
         return $this->attributes["id"];
@@ -103,7 +113,7 @@ class Product extends Model
         $this->attributes["isPromoted"] = $isPromoted;
     }
 
-    public $table = 'product';
+    public $table = "product";
 
     public function comboDivider()
     {

@@ -13,18 +13,18 @@ class CreateProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('product', function (Blueprint $table) {
+        Schema::create("product", function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('model');
-            $table->string('category');
-            $table->string('brand');
-            $table->integer('stock');
-            $table->integer('price');
-            $table->boolean('isPromoted')->nullable();
+            $table->string("name")->unique();
+            $table->string("model");
+            $table->string("category");
+            $table->string("brand");
+            $table->integer("stock");
+            $table->integer("price");
+            $table->boolean("isPromoted")->nullable();
             //$table->foreign('combo')->references('id')->on('combo');
             //$table->foreign('item')->references('id')->on('item');
-            $table->timestamps();    
+            $table->timestamps();
         });
     }
 
@@ -35,6 +35,6 @@ class CreateProductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists("product");
     }
 }

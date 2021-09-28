@@ -11,18 +11,29 @@ use App\Models\ComboHistory;
 class Combo extends Model
 {
     // attributes id, name, model, category, brand, stock, price, isPromoted, combos, items
-    protected $fillable = ['id', 'name', 'type', 'price', 'description', 'lowSale', 'validity', 'creationDate', 'quantityAvailable'];
+    protected $fillable = [
+        "id",
+        "name",
+        "type",
+        "price",
+        "description",
+        "lowSale",
+        "validity",
+        "creationDate",
+        "quantityAvailable",
+    ];
 
-    public static function validateCombo(Request $request){
+    public static function validateCombo(Request $request)
+    {
         $request->validate([
             "name" => "required",
             "type" => "required",
             "description" => "required",
             "validity" => "required|gt:0",
-            "quantityAvailable" => "required|gt:0"
-        ]); 
+            "quantityAvailable" => "required|gt:0",
+        ]);
     }
-    
+
     public function getId()
     {
         return $this->attributes["id"];
@@ -103,7 +114,7 @@ class Combo extends Model
         $this->attributes["creationDate"] = $creationDate;
     }
 
-    public $table = 'combo';
+    public $table = "combo";
 
     public function comboDivider()
     {

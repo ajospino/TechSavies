@@ -13,9 +13,9 @@ class ComboController extends Controller
         $data = []; //to be sent to the view
 
         $data["title"] = "Combos";
-        $data["combo"] = Combo::orderBy('id','desc')->get();
-        
-        return view('combo.list')->with("data",$data);
+        $data["combo"] = Combo::orderBy("id", "desc")->get();
+
+        return view("combo.list")->with("data", $data);
     }
 
     public function show($id)
@@ -23,38 +23,47 @@ class ComboController extends Controller
         $data = [];
         $combo = Combo::findOrFail($id);
         $data["combo"] = $combo;
-        return view('combo.show')->with("data", $data);
+        return view("combo.show")->with("data", $data);
     }
 
-    
     public function add()
     {
         $data = []; //to be sent to the view
         $data["title"] = "Create combo";
 
-        return view('combo.create')->with("data",$data);
+        return view("combo.create")->with("data", $data);
     }
 
     public function save(Request $request)
     {
         Combo::validateCombo($request);
-        
-        $combo = Combo::create($request->only('name','type','description','validity','quantityAvailable'));
-        
+
+        $combo = Combo::create(
+            $request->only(
+                "name",
+                "type",
+                "description",
+                "validity",
+                "quantityAvailable"
+            )
+        );
+
         $productPrice = $combo->comboDivider->product->price;
         $productQuantity = $combo->comboDivider->quantity;
-        
-        $combo->price = ($productPrice * $productQuantity) - (($productPrice * $productQuantity)*10);
+
+        $combo->price =
+            $productPrice * $productQuantity -
+            $productPrice * $productQuantity * 10;
 
         $combo->creationDate = Carbon::now()->toDateTimeString();
 
         if ($combo->quantityAvailable < 51) {
-            $combo->lowSale = False;
+            $combo->lowSale = false;
         } else {
-            $combo->lowSale = True;
+            $combo->lowSale = true;
         }
 
-        //here goes the code to call the model and save it to the database     
+        //here goes the code to call the model and save it to the database
     }
 
     public function edit($id)
@@ -64,7 +73,7 @@ class ComboController extends Controller
         $data["combo"] = $combo;
         $data["title"] = "Edit combo";
 
-        return view('combo.edit')->with("data", $data);
+        return view("combo.edit")->with("data", $data);
     }
 
     public function delete($id)
@@ -72,7 +81,7 @@ class ComboController extends Controller
         $data = [];
         $comnbo = Combo::findOrFail($id);
         $data["combo"] = $combo;
-        return view('combo.show')->with("data", $data);
+        return view("combo.show")->with("data", $data);
     }
 
     public function moderate(Request $request)
@@ -81,14 +90,14 @@ class ComboController extends Controller
         $data["title"] = "Moderate combo";
         $data["request"] = $request;
 
-        return view('combo.moderate')->with("data",$data);
+        return view("combo.moderate")->with("data", $data);
     }
 
     public function approve(Request $request)
     {
         $this->save($request);
 
-        redirect()->route('home.index');
+        redirect()->route("home.index");
     }
 
     public function deny($id)
@@ -96,12 +105,8 @@ class ComboController extends Controller
         $data = [];
         $product = Product::findOrFail($id);
         $data["product"] = $product;
-        return view('product.show')->with("data", $data);
+        return view("product.show")->with("data", $data);
     }
-
 }
-
-
-
 
 ?>
