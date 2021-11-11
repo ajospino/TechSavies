@@ -33,10 +33,10 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('register') }}">{{ __('Register') }}</a></li>
                         @else
 
-                        @if(Auth::user()->type === 1)
+                        @can('isAdmin')
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('admin.list') }}">List users</a></li>
-                        @else
-                        @endif
+                        @endcan
+                        
                         @if(Auth::user()->type === 1 && Route::currentRouteName() === '/combo/list')
 
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('combo.create') }}">Create Combo</a></li>
