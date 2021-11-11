@@ -14,6 +14,7 @@ ARG ENVFILE
 
 ENV ENVFILE = ${ENVFILE}
 
+RUN touch .env
 RUN cat ${ENVFILE} > /.env
 
 RUN a2enmod rewrite 
