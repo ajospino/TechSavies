@@ -10,9 +10,9 @@ RUN composer install \
     --no-scripts \ 
     --prefer-dist 
 
-ARG ENVFILE
+ARG ENV_FILE
 
-ENV ENVFILE = ${ENVFILE}
+ENV ENVFILE = ${ENV_FILE}
 
 RUN touch .env
 RUN echo $ENVFILE > /.env
