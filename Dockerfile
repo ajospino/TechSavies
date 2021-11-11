@@ -15,7 +15,7 @@ ARG ENVFILE
 ENV ENVFILE = ${ENVFILE}
 
 RUN touch .env
-RUN cat ${ENVFILE} > /.env
+RUN echo $ENVFILE > /.env
 
 RUN a2enmod rewrite 
 RUN service apache2 restart
