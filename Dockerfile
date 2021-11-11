@@ -17,5 +17,7 @@ ENV ENVFILE = ${ENV_FILE}
 RUN touch .env
 RUN echo $ENVFILE > /.env
 
+
+RUN  echo "ServerName techsavies.tk" | tee /etc/apache2/conf-available/fqdn.conf && \     a2enconf fqdn
 RUN a2enmod rewrite 
 RUN service apache2 restart
