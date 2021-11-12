@@ -11,9 +11,9 @@ RUN composer install \
     --prefer-dist 
 
 RUN php artisan config:cache
-# Optimizing Route loading
+
 RUN php artisan route:cache
-# Optimizing View loading
+
 RUN php artisan view:cache
 
 ARG ENV_FILE
