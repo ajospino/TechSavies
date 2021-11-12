@@ -16,8 +16,8 @@ ARG ENV_FILE
 
 ENV ENVFILE = ${ENV_FILE}
 
-RUN touch /.env
-RUN printenv > /.env
+RUN touch .env
+RUN printenv > .env
 
 RUN php artisan key:generate
 RUN php artisan migrate
