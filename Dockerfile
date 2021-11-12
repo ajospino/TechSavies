@@ -10,6 +10,12 @@ RUN composer install \
     --no-scripts \ 
     --prefer-dist 
 
+RUN php artisan config:cache
+# Optimizing Route loading
+RUN php artisan route:cache
+# Optimizing View loading
+RUN php artisan view:cache
+
 ARG ENV_FILE
 
 ENV ENVFILE = ${ENV_FILE}
@@ -17,6 +23,5 @@ ENV ENVFILE = ${ENV_FILE}
 RUN touch /.env
 RUN printenv > /.env
 
-#RUN  echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf && \     a2enconf fqdn
 RUN a2enmod rewrite 
 RUN service apache2 restart
