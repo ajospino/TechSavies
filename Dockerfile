@@ -12,6 +12,13 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
+ARG ENV_FILE
+
+ENV ENVFILE = ${ENV_FILE}
+
+RUN touch /.env
+RUN printenv > /.env
+
 RUN php artisan key:generate
 RUN php artisan migrate
 RUN chmod -R 777 storage
@@ -22,12 +29,7 @@ RUN php artisan route:cache
 
 RUN php artisan view:cache
 
-ARG ENV_FILE
 
-ENV ENVFILE = ${ENV_FILE}
-
-RUN touch /.env
-RUN printenv > /.env
 
 RUN a2enmod rewrite 
 RUN service apache2 restart
