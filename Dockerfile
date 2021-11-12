@@ -22,6 +22,6 @@ ENV ENVFILE = ${ENV_FILE}
 
 RUN touch /.env
 RUN printenv > /.env
-
+#
 RUN a2enmod rewrite 
 RUN service apache2 restart
