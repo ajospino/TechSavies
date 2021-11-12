@@ -12,22 +12,8 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-#ARG ENV_FILE
-
-#RUN touch .env
-#RUN cat ${ENV_FILE} >> .env
-
 RUN php artisan key:generate
 RUN php artisan migrate
 RUN chmod -R 777 storage
-
-RUN php artisan config:cache
-
-RUN php artisan route:cache
-
-RUN php artisan view:cache
-
-
-
-RUN a2enmod rewrite 
+RUN a2enmod rewrite
 RUN service apache2 restart
