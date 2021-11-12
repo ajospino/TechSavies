@@ -14,14 +14,11 @@ RUN composer install \
 
 ARG ENV_FILE
 
-ENV ENVFILE = ${ENV_FILE}
-
 RUN touch .env
 RUN cat ${ENV_FILE} >> .env
-#RUN printenv > .env
 
 RUN php artisan key:generate
-RUN php artisan migrate
+RUN php artisan migrate -y
 RUN chmod -R 777 storage
 
 RUN php artisan config:cache
