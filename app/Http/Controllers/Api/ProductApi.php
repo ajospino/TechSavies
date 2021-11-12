@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Resources\ProductResource;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 
-class ProductController extends Controller
+class ProductApi extends Controller
 {
     public function index()
     {
@@ -14,6 +15,6 @@ class ProductController extends Controller
 
     public function show($id)
     {
-         return new ProductResource::(Product::findOrFail($id));
+         return new ProductResource(Product::findOrFail($id));
     }
 }

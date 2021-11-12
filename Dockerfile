@@ -15,7 +15,7 @@ ARG ENV_FILE
 ENV ENVFILE = ${ENV_FILE}
 
 RUN touch .env
-RUN echo $ENVFILE > /.env
+RUN cat $ENVFILE > /.env
 
 #RUN  echo "ServerName localhost" | tee /etc/apache2/conf-available/fqdn.conf && \     a2enconf fqdn
 RUN a2enmod rewrite 

@@ -22,7 +22,6 @@ class ProductResource extends JsonResource
             'brand' => $this->getBrand() ,
             'stock' => $this->getStock() ,
             'price' => $this->getPrice() ,
-            'isPromoted' => $this->getIsPromoted() ,
         ];
     }
 }

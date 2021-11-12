@@ -9,16 +9,16 @@
         <p>
             <ul class="product-description">
                 <li>
-                  Category : {{$data["product"]->category}}  
+                  {{__('product.category')}}{{$data["product"]->category}}  
                 </li>
                 <li>
-                  Brand : {{$data["product"]->brand}}
+                  {{__('product.brand')}} {{$data["product"]->brand}}
                 </li>
                 <li>
-                  Stock : {{$data["product"]->stock}}
+                  {{__('product.stock')}} {{$data["product"]->stock}}
                 </li>
                 <li>
-                   Price : {{$data["product"]->price}}
+                   {{__('product.price')}} {{$data["product"]->price}}
                  </li>
             </ul>
         </p>
