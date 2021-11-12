@@ -40,9 +40,7 @@ class ProductController extends Controller
             )
         );
 
-        $product->isPromoted = Combo::findOrFail(
-            $product->comboDivider->combo->id
-        );
+        $product->isPromoted = False;
 
         redirect()->route("home.index");
         //here goes the code to call the model and save it to the database
