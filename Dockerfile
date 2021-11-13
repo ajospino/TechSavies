@@ -12,13 +12,6 @@ RUN composer install \
     --no-scripts \
     --prefer-dist
 
-ARG ENV_FILE
-
-RUN touch .env
-RUN echo ${ENV_FILE}
-
-RUN echo "$(<.env )"
-
 RUN php artisan key:generate
 RUN php artisan migrate --force
 RUN chmod -R 777 storage
