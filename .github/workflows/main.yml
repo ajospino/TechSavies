@@ -16,13 +16,17 @@ jobs:
     - uses: actions/checkout@v2
     - name: docker login
       env:
-        ENV_FILE: ${{secrets.ENVIRONMENT_FILE}}
         DOCKER_USER: ${{secrets.DOCKERHUB_USER}}
         DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS
+    - name: create .env file
+      run: | 
+       touch .env
+       cat ${{secrets.ENVIRONMENT_FILE}} >> .env
+       
     - name: Build the Docker image
-      run: docker build . --build-arg ENV_FILE=$ENV_FILE --tag felobetter/teswp2:latest
+      run: docker build . --tag felobetter/teswp2:latest
       
     - name: Docker Push
       run: docker push felobetter/teswp2
