@@ -20,13 +20,13 @@ jobs:
         DOCKER_PASS: ${{secrets.DOCKERHUB_PASS}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASS
-    - name: create .env file
-      run: | 
-       touch .env
-       cat ${{secrets.ENVIRONMENT_FILE}} >> .env
-       
     - name: Build the Docker image
-      run: docker build . --tag felobetter/teswp2:latest
+      env:  
+       ENV_FILE: ${{secrets.ENVIRONMENT_FILE}}
+      run: |
+       touch .env
+       cat $ENV_FILE > .env
+       docker build . --tag felobetter/teswp2:latest
       
     - name: Docker Push
       run: docker push felobetter/teswp2
