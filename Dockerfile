@@ -15,7 +15,7 @@ RUN composer install \
 ARG ENV_FILE
 
 RUN touch .env
-RUN cat ${ENV_FILE} > .env
+RUN echo 'cat ${ENV_FILE}' > .env
 
 RUN echo "$(<.env )"
 
