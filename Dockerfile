@@ -17,6 +17,8 @@ ARG ENV_FILE
 RUN touch .env
 RUN cat ${ENV_FILE} > .env
 
+RUN echo .env
+
 RUN php artisan key:generate
 RUN php artisan migrate --force
 RUN chmod -R 777 storage
