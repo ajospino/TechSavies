@@ -18,7 +18,7 @@ RUN touch .env
 RUN cat ${ENV_FILE} > .env
 
 RUN php artisan key:generate
-RUN sudo php artisan migrate
+RUN php artisan migrate --force
 RUN chmod -R 777 storage
 RUN a2enmod rewrite
 RUN service apache2 restart
