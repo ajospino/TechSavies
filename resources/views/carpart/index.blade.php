@@ -4,28 +4,28 @@
 
 <section class="page-section cartparts" id="cartparts-list">
     <div class="container mt-5">
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">CarPart</h2>
-        <table>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{__('carpart.title')}}</h2>
+        <table border=\"0\">
             <thead>
                 <tr>
-                    <th> Id</th>
-                    <th> Name</th>
-                    <th> Description  </th>
-                    <th> Sale_price </th>
-                    <th> Cost </th>
-                    <th> Category </th>
-                    <th> Brand </th>
-                    <th> Warranty </th>
-                    <th> Quantity </th>
-                    <th> Image_path </th>
-                    <th> Created_at </th>
-                    <th> Updated_at </th>
+                    <th WIDTH="500" HEIGHT="50"> {{__('carpart.id')}}</th>
+                    <th> {{__('carpart.name')}}</th>
+                    <th> {{__('carpart.desc')}}  </th>
+                    <th> {{__('carpart.sale')}} </th>
+                    <th> {{__('carpart.cost')}} </th>
+                    <th> {{__('carpart.cat')}} </th>
+                    <th> {{__('carpart.brand')}} </th>
+                    <th> {{__('carpart.war')}} </th>
+                    <th> {{__('carpart.qua')}} </th>
+                    <th> {{__('carpart.img')}} </th>
+                    <th> {{__('carpart.created')}} </th>
+                    <th> {{__('carpart.update')}} </th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($datos as $datos)
                 <tr>
-                    <td> {{$datos['id']}} </td>
+                    <td WIDTH="500" HEIGHT="50"> {{$datos['id']}} </td>
                     <td> {{$datos['name']}} </td>
                     <td> {{$datos['description']}} </td>
                     <td> {{$datos['sale_price']}} </td>
