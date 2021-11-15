@@ -10,32 +10,32 @@ class ComboDivider extends Model
 {
     public function getId()
     {
-        return $this->attributes["id"];
+        return $this->attributes['id'];
     }
 
     public function setId($id)
     {
-        $this->attributes["id"] = $id;
+        $this->attributes['id'] = $id;
     }
 
     public function getQuantity()
     {
-        return $this->attributes["quantity"];
+        return $this->attributes['quantity'];
     }
 
     public function setQuantity($quantity)
     {
-        $this->attributes["quantity"] = $quantity;
+        $this->attributes['quantity'] = $quantity;
     }
 
     public function getSubtotal()
     {
-        return $this->attributes["subtotal"];
+        return $this->attributes['subtotal'];
     }
 
     public function setSubtotal($subtotal)
     {
-        $this->attributes["subtotal"] = $subtotal;
+        $this->attributes['subtotal'] = $subtotal;
     }
 
     public function combo()
@@ -48,5 +48,3 @@ class ComboDivider extends Model
         return $this->belongsTo(Product::class);
     }
 }
-
-?>

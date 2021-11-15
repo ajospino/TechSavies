@@ -20,6 +20,10 @@
                    <p class="product-price">
                     {{__('product.price')}} ${{$product->price}} {{__('product.currency')}}
                    </p>
+                    {{__()}}
+                   <button>
+                       {{__('product.add')}}
+                   </button>
                 </div>
             </div>
             @endforeach

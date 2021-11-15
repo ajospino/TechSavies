@@ -11,18 +11,18 @@ class OrderController extends Controller
     {
         $data = []; //to be sent to the view
 
-        $data["title"] = "Order";
-        $data["item"] = Item::orderBy("id", "desc")->get();
+        $data['title'] = 'Order';
+        $data['item'] = Item::orderBy('id', 'desc')->get();
 
-        return view("item.list")->with("data", $data);
+        return view('item.list')->with('data', $data);
     }
 
     public function add()
     {
         $data = []; //to be sent to the view
-        $data["title"] = "Create order";
+        $data['title'] = 'Create order';
 
-        return view("order.create")->with("data", $data);
+        return view('order.create')->with('data', $data);
     }
 
     public function save(Request $request)
@@ -30,21 +30,12 @@ class OrderController extends Controller
         Order::validateOrder($request);
 
         $product = Order::create(
-            $request->only(
-                "name",
-                "model",
-                "category",
-                "brand",
-                "stock",
-                "price"
-            )
+            $request->only('name', 'model', 'category', 'brand', 'stock', 'price')
         );
 
-        $product->isPromoted = Combo::findOrFail(
-            $product->comboDivider->combo->id
-        );
+        $product->isPromoted = Combo::findOrFail($product->comboDivider->combo->id);
 
-        redirect()->route("home.index");
+        redirect()->route('home.index');
         //here goes the code to call the model and save it to the database
     }
 
@@ -52,8 +43,8 @@ class OrderController extends Controller
     {
         $data = [];
         $product = Product::findOrFail($id);
-        $data["product"] = $product;
-        return view("product.show")->with("data", $data);
+        $data['product'] = $product;
+        return view('product.show')->with('data', $data);
     }
 
     // public function search(Request $request)
@@ -65,5 +56,3 @@ class OrderController extends Controller
     //     return view('product.search')->with([("results",$results),("term",$term)]);
     // }
 }
-
-?>
