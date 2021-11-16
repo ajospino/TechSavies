@@ -3,9 +3,7 @@
 @section('content')
 
 <section class="page-section products" id="products-list">
-    @if (Auth::user()->getType())
-        <a class="btn-toolbar mt-2"  href="{{route('home')}}">{{__('pagination.back')}}</a>
-    @endif
+    <a class="btn-toolbar mt-2"  href="{{route('home')}}">{{__('pagination.back')}}</a>
     <div class="container mt-5">
         <!-- Products list Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{__('product.title_p')}}</h2>
