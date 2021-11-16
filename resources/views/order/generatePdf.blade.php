@@ -35,7 +35,7 @@
                     <h1 align="center" style="color:#D6A06A ; margin: 0 0 7px">{{__('order.receipt_info')}}</h1>
                     
                     <p align="center" style="color: #D6A06A; margin: 2px; font-size: 15px">
-                            {{__('order.id')}}</p>
+                            {{__('order.number')}}</p>
                     <p align="center" style="color: #D6A06A; margin: 15px; font-size: 15px">
                             <b>{{$order->getId()}} </b></p>    
                     
