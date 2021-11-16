@@ -24,6 +24,7 @@ return [
     'address'=> 'Address used for order delivery: ',
 
     'pdf_create' => 'Generate orders PDF',
+    'id'=> 'Order identification number'
     'empty' => 'There are no current orders available for a receipt generation',
     'receipt_info' => 'These are the order details',
     'receipt_visit' => 'You can always visit our page for more info',
