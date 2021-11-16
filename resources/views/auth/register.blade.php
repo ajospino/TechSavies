@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+
+<section class="page-section register" id="register">
+<h2 class="page-section-heading text-center text-uppercase text-secondary mt-10">{{__('registration.title')}}</h2>
+<div class="container mt-5 mb-5">
+    <div class="row mt-5 justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -88,4 +91,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection
