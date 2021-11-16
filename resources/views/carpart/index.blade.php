@@ -5,7 +5,7 @@
 <section class="page-section cartparts" id="cartparts-list">
     <div class="container mt-5">
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{__('carpart.title')}}</h2>
-        <table border=\"0\">
+        <table class="mr-5" border=\"0\">
             <thead>
                 <tr>
                     <th> {{__('carpart.id')}}</th>

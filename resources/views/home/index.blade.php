@@ -5,7 +5,7 @@
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Welcome to the TechSavies store</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{__('home.welcome')}}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -20,10 +20,10 @@
                     </a>
                 </div>
         </div>
-        <div class="col-lg-4 mr-auto">
-                <div class="text-center mt-4">
+        <div class="col mt-4">
+                <div class="text-center mt-4" align=center>
                     <a class="btn btn-xl btn-outline-light" href="{{ route('carpart.index') }}">
-                        CarPart
+                        {{__('carpart.title')}}
                     </a>
                 </div>
             </div>

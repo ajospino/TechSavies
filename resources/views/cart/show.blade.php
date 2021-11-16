@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="col-md-8 my-auto">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ $product->getName() }}</h5>
+                                        <h5 class="card-title">{{$product->getBrand() . " ". $product->getName() ." ". $product->getModel() }}</h5>
                                         <p class="card-text">{{ __('cart.quantity') }}
                                             {{ $data['objects'][$product->getId()]['quantity'] }}
                                         </p>

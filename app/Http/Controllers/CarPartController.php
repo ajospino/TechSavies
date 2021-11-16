@@ -17,7 +17,6 @@ class CarPartController extends Controller
     {
         $respuesta = Http::get('http://carpart.ml/carparts_ecommerce/public/api/products');
         $datos = $respuesta->json();
-        return view('carpart.index',compact('datos'));
+        return view('carpart.index', compact('datos'));
     }
-
 }
