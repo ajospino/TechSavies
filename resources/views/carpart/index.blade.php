@@ -8,7 +8,7 @@
         <table border=\"0\">
             <thead>
                 <tr>
-                    <th WIDTH="500" HEIGHT="50"> {{__('carpart.id')}}</th>
+                    <th> {{__('carpart.id')}}</th>
                     <th> {{__('carpart.name')}}</th>
                     <th> {{__('carpart.desc')}}  </th>
                     <th> {{__('carpart.sale')}} </th>
@@ -25,7 +25,7 @@
             <tbody>
                 @foreach($datos as $datos)
                 <tr>
-                    <td WIDTH="500" HEIGHT="50"> {{$datos['id']}} </td>
+                    <td> {{$datos['id']}} </td>
                     <td> {{$datos['name']}} </td>
                     <td> {{$datos['description']}} </td>
                     <td> {{$datos['sale_price']}} </td>
