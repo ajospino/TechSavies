@@ -21,7 +21,7 @@ class Product extends Model
         'isPromoted',
     ];
 
-    public static function validateProduct(Request $request)
+    public static function validate(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -113,7 +113,7 @@ class Product extends Model
         $this->attributes['isPromoted'] = $isPromoted;
     }
 
-    public $table = 'product';
+    public $table = 'products';
 
     public function comboDivider()
     {

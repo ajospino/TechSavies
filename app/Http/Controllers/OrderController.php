@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
+use PDF;
 
 class OrderController extends Controller
 {
@@ -11,48 +13,37 @@ class OrderController extends Controller
     {
         $data = []; //to be sent to the view
 
-        $data['title'] = 'Order';
-        $data['item'] = Item::orderBy('id', 'desc')->get();
+        $data['title'] = 'Orders Listing';
+        $user = Auth::user();
 
-        return view('item.list')->with('data', $data);
-    }
+        $data['list'] = Order::with('user')
+            ->orderBy('id')
+            ->where('user_id', $user->getId())
+            ->get();
 
-    public function add()
-    {
-        $data = []; //to be sent to the view
-        $data['title'] = 'Create order';
-
-        return view('order.create')->with('data', $data);
-    }
-
-    public function save(Request $request)
-    {
-        Order::validateOrder($request);
-
-        $product = Order::create(
-            $request->only('name', 'model', 'category', 'brand', 'stock', 'price')
-        );
-
-        $product->isPromoted = Combo::findOrFail($product->comboDivider->combo->id);
-
-        redirect()->route('home.index');
-        //here goes the code to call the model and save it to the database
+        return view('order.list')->with('data', $data);
     }
 
     public function show($id)
     {
         $data = [];
-        $product = Product::findOrFail($id);
-        $data['product'] = $product;
-        return view('product.show')->with('data', $data);
+        $order = Order::findOrFail($id);
+        $data['order'] = $order;
+        return view('order.show')->with('data', $data);
     }
 
-    // public function search(Request $request)
-    // {
-    //     $term = $request->input("term");
+    public function orderPDF()
+    {
+        $data = [];
+        $data['title'] = 'Orders list';
+        $user = Auth::user();
+        $data['list'] = Order::with('user')
+            ->orderBy('id')
+            ->where('user_id', $user->getId())
+            ->get();
 
-    //     $results = Product::query()->when($term, fn ($query)=> $query->where('name','like',"%{term}%"))->paginate(10);
+        $pdf = PDF::loadView('order.generatePdf', ['data' => $data]);
 
-    //     return view('product.search')->with([("results",$results),("term",$term)]);
-    // }
+        return $pdf->download('Orders.pdf');
+    }
 }

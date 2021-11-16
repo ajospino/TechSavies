@@ -12,6 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    'index' => 'Products',
     'title_p'=> 'Product listing',
 
     'price' => 'Price : ',
@@ -29,6 +30,9 @@ return [
     'charger' => 'Charger',
     'typec' => 'USB-C Cable',
     'light' => 'Lightning Cable',
+
+    'quantity' => 'Enter the desired quantity',
+    'add_cart' => 'Add this product to the cart'
 
     
 

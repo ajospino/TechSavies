@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function save(Request $request)
     {
-        Product::validateProduct($request);
+        Product::validate($request);
 
         $product = Product::create(
             $request->only('name', 'model', 'category', 'brand', 'stock', 'price')
@@ -35,7 +35,7 @@ class ProductController extends Controller
 
         $product->isPromoted = false;
 
-        redirect()->route('home.index');
+        return redirect()->route('home');
         //here goes the code to call the model and save it to the database
     }
 

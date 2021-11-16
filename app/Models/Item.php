@@ -1,5 +1,7 @@
 <?php
- //phpcs:disable
+
+//phpcs:disable
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -8,17 +10,15 @@ use Illuminate\Http\Request;
 class Item extends Model
 {
     protected $fillable = ['quantity', 'subtotal', 'product_id', 'order_id'];
-//phpcs:enable
+    //phpcs:enable
     public static function validate(Request $request)
     {
-        $request->validate(
-            [
+        $request->validate([
             'quantity' => 'required|integer|gt:0',
             'subtotal' => 'required|integer|gt:0',
             'product_id',
             'order_id',
-            ]
-        );
+        ]);
     }
 
     public function getId()

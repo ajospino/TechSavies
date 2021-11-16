@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
         $user->type = 0;
-        //redirect()->route('home.index');
+
         return $user;
     }
 }
