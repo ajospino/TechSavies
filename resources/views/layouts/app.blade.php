@@ -40,13 +40,13 @@
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('admin.list') }}">{{__('admin.list_users')}}</a></li>
                             @endcan
 
-                            @if(Auth::user()->getType() === 1 && Route::currentRouteName() === '/product/list')
+                            @if(Auth::user()->getType()  && Route::currentRouteName() === 'product.list')
 
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('product.create') }}">{{__('product.title_c')}}</a></li>
 
                             @endif
 
-                            @if(Route::currentRouteName() === '/order/list')
+                            @if(Route::currentRouteName() === 'order.list')
                                 <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('order.generatePDF') }}">{{ __('order.pdf_create') }}</a></li>
                             @endif
                             <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('cart.show') }}">{{ __('cart.header') }}</a></li>

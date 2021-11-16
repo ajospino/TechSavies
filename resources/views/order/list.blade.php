@@ -7,7 +7,6 @@
     <div class="container mt-5">
         <!-- Products list Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{__('order.title_l')}}</h2>
-        <a class="btn-toolbar-2 mt-2"  href="{{route('order.generatePDF')}}">{{__('order.pdf_create')}}</a>
         <!-- Product Grid Items-->
         <div class="row mt-5">
             @foreach($data["list"] as $order)
