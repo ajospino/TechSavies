@@ -20,6 +20,14 @@
                     </a>
                 </div>
         </div>
+        <div class="col-lg-4 mr-auto">
+                <div class="text-center mt-4">
+                    <a class="btn btn-xl btn-outline-light" href="{{ route('carpart.index') }}">
+                        CarPart
+                    </a>
+                </div>
+            </div>
+        </div>
         <div class="row mt-5">
             <!-- Portfolio Item 1-->
             <div class="col-md-6 col-lg-4 mb-5">

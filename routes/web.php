@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 
+
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::get('/home/user', 'App\Http\Controllers\HomeController@home')->name('home.indexUser');
@@ -39,6 +40,11 @@ Route::get('/product/create', 'App\Http\Controllers\ProductController@add')->nam
 Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name('product.save');
 
 Route::post('/cart/add', 'App\Http\Controllers\CartController@add')->name('cart.add');
+
+Route::get(
+    "/carpart/index",
+    "App\Http\Controllers\CarPartController@index"
+)->name("carpart.index");
 
 Route::get('/cart/show', 'App\Http\Controllers\CartController@show')->name('cart.show');
 
